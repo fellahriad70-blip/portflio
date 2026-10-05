@@ -50,6 +50,8 @@ import {
 } from "lucide-react";
 
 const BLUE = "#1f3cff";
+const INV_TEXT = "#f7f6f2";
+const invBg = (t: "light" | "dark") => (t === "light" ? "#101013" : "#17171c");
 const INK_LIGHT = "#101013";
 const PAPER = "#f7f6f2";
 const PAPER_DEEP = "#f1efe9";
@@ -498,7 +500,7 @@ function MiniToc({ active, theme }: { active: string; theme: Theme }) {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   return (
     <aside
-      className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 xl:block"
+      className="fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 min-[1500px]:block"
       aria-label="Table of contents"
     >
       <ul className="space-y-3">
@@ -807,7 +809,7 @@ function Hero({ theme }: { theme: Theme }) {
         </div>
       </div>
 
-      <div style={{ backgroundColor: p.ink }}>
+      <div style={{ backgroundColor: invBg(theme) }}>
         <div className="mx-auto grid max-w-[1180px] grid-cols-2 md:grid-cols-4">
           {STATS.map((s, i) => (
             <StatCell key={s.label} {...s} last={i === STATS.length - 1} theme={theme} />
@@ -838,12 +840,12 @@ function StatCell({
   return (
     <div
       className="group px-5 py-8 sm:px-8"
-      style={{ borderRight: last ? "none" : `1px solid ${theme === "light" ? "rgba(247,246,242,0.12)" : "rgba(237,237,234,0.08)"}` }}
+      style={{ borderRight: last ? "none" : "1px solid rgba(247,246,242,0.12)" }}
     >
       <span
         ref={ref}
         className="block font-display text-[clamp(2rem,5vw,3.2rem)] font-bold leading-none tracking-[-0.04em] transition-colors duration-500"
-        style={{ color: p.paper }}
+        style={{ color: INV_TEXT }}
       >
         {val}
         <span style={{ color: BLUE }}>{suffix}</span>
@@ -968,32 +970,24 @@ function Experience({ theme }: { theme: Theme }) {
     >
       <div className="relative">
         <div
-          className="absolute left-6 top-0 hidden w-[2px] md:left-8 md:block"
+          className="absolute top-0 hidden w-[2px] md:left-8 md:block"
           style={{ backgroundColor: p.line, top: 0, bottom: 0 }}
         />
 
         <div className="space-y-10">
           {EXPERIENCE.map((e, i) => (
             <Reveal key={i} d={i * 80}>
-              <article className="group relative md:grid md:grid-cols-[120px_1fr] md:gap-10">
-                <div className="relative mb-4 md:mb-0">
+              <article className="group relative md:grid md:grid-cols-[64px_1fr] md:gap-8">
+                <div className="relative hidden md:block">
                   <div
-                    className="absolute left-1/2 hidden h-4 w-4 -translate-x-1/2 rounded-full md:block"
+                    className="absolute left-1/2 h-4 w-4 -translate-x-1/2 rounded-full"
                     style={{
-                      top: 22,
+                      top: 26,
                       backgroundColor: p.paper,
                       border: `2px solid ${BLUE}`,
                       boxShadow: `0 0 0 4px ${p.paper}, 0 0 0 6px ${BLUE}`,
                     }}
                   />
-                  <div className="flex justify-center md:block">
-                    <div
-                      className="transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1"
-                      style={{ filter: "drop-shadow(0 4px 12px rgba(16,16,19,0.08))" }}
-                    >
-                      <Logo k={e.logoKey} theme={theme} size={64} />
-                    </div>
-                  </div>
                 </div>
 
                 <div
@@ -1085,9 +1079,6 @@ function Projects({ theme }: { theme: Theme }) {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div style={{ filter: "drop-shadow(0 2px 6px rgba(16,16,19,0.08))" }}>
-                      <Logo k={proj.logoKey} theme={theme} size={44} />
-                    </div>
                     <div>
                       <span
                         className="block font-mono text-[9.5px] uppercase tracking-[0.16em]"
@@ -1099,7 +1090,6 @@ function Projects({ theme }: { theme: Theme }) {
                         className="inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-[0.14em]"
                         style={{ color: p.mute }}
                       >
-                        <Lucide name={proj.kind} size={10} />
                         Project {proj.n}
                       </span>
                     </div>
@@ -1157,7 +1147,7 @@ function Research({ theme }: { theme: Theme }) {
       id="research"
       index="04"
       title="Research"
-      lede="Machine learning engineering for medical imaging — two MICCAI Society 2026 papers."
+      lede="Machine learning engineering for medical imaging — two papers at MICCAI 2026 workshops."
       theme={theme}
       alt
     >
@@ -1178,7 +1168,7 @@ function Research({ theme }: { theme: Theme }) {
                 style={{ backgroundColor: BLUE, color: PAPER, transform: "translateY(-50%)" }}
               >
                 <Award size={10} strokeWidth={2} />
-                MICCAI Society 2026 · Accepted
+                {paper.badge}
               </span>
               <h3
                 className="mt-2 font-display text-[17px] font-bold leading-snug tracking-[-0.02em] transition-colors duration-300 group-hover:text-[#1f3cff]"
@@ -1187,7 +1177,7 @@ function Research({ theme }: { theme: Theme }) {
                 {paper.title}
               </h3>
               <p className="mt-3 text-[13px] leading-relaxed" style={{ color: p.mute }}>
-                {paper.authors.split("Riad Fellah").map((part, j, arr) => (
+                {paper.authors.split("Riadh Fellah").map((part, j, arr) => (
                   <span key={j}>
                     {part}
                     {j < arr.length - 1 && (
@@ -1195,7 +1185,7 @@ function Research({ theme }: { theme: Theme }) {
                         className="font-semibold"
                         style={{ color: p.ink, borderBottom: `2px solid ${BLUE}` }}
                       >
-                        Riad Fellah
+                        Riadh Fellah
                       </strong>
                     )}
                   </span>
@@ -1313,9 +1303,9 @@ function Education({ theme }: { theme: Theme }) {
                 style={{ borderColor: p.ink, backgroundColor: p.paper }}
               >
                 <div className="flex items-start justify-between gap-4">
-                  <div style={{ filter: "drop-shadow(0 3px 8px rgba(16,16,19,0.08))" }}>
-                    <Logo k={e.logoKey} theme={theme} size={64} />
-                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: BLUE }}>
+                    Degree
+                  </span>
                   <span className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: p.mute }}>
                     {e.period}
                   </span>
@@ -1367,7 +1357,7 @@ function Contact({ theme }: { theme: Theme }) {
   };
 
   return (
-    <section id="contact" className="relative scroll-mt-20" style={{ backgroundColor: p.ink }}>
+    <section id="contact" className="relative scroll-mt-20" style={{ backgroundColor: invBg(theme) }}>
       <div className="mx-auto max-w-[1180px] px-5 py-20 sm:px-8 sm:py-24">
         <Reveal>
           <div className="flex items-baseline gap-4">
@@ -1379,12 +1369,12 @@ function Contact({ theme }: { theme: Theme }) {
             </span>
             <h2
               className="font-display text-[clamp(1.8rem,4.8vw,3.1rem)] font-bold leading-none tracking-[-0.035em]"
-              style={{ color: p.paper }}
+              style={{ color: INV_TEXT }}
             >
               Contact
             </h2>
           </div>
-          <div className="mt-6 h-[2px] w-full" style={{ backgroundColor: theme === "light" ? "rgba(247,246,242,0.18)" : "rgba(237,237,234,0.18)" }} />
+          <div className="mt-6 h-[2px] w-full" style={{ backgroundColor: "rgba(247,246,242,0.18)" }} />
         </Reveal>
 
         <div className="mt-12 grid gap-12 lg:grid-cols-12">
@@ -1400,9 +1390,9 @@ function Contact({ theme }: { theme: Theme }) {
                   href={`mailto:${PROFILE.email}`}
                   data-cursor="hover"
                   className="group break-all font-display text-[clamp(1.4rem,4.4vw,2.6rem)] font-bold leading-[1.05] tracking-[-0.04em] no-underline transition-colors duration-400"
-                  style={{ color: p.paper }}
+                  style={{ color: INV_TEXT }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = BLUE)}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = p.paper)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = INV_TEXT)}
                 >
                   {PROFILE.email}
                   <ArrowUpRight
@@ -1415,8 +1405,8 @@ function Contact({ theme }: { theme: Theme }) {
                   onClick={copy}
                   className="inline-flex items-center gap-1.5 border px-3 py-1.5 font-mono text-[9.5px] uppercase tracking-[0.14em] transition-all duration-300 hover:-translate-y-0.5"
                   style={{
-                    borderColor: theme === "light" ? "rgba(247,246,242,0.3)" : "rgba(237,237,234,0.3)",
-                    color: p.paper,
+                    borderColor: "rgba(247,246,242,0.3)",
+                    color: INV_TEXT,
                   }}
                 >
                   {copied ? <Check size={12} /> : <Copy size={12} />}
@@ -1425,7 +1415,7 @@ function Contact({ theme }: { theme: Theme }) {
               </div>
             </Reveal>
             <Reveal d={220}>
-              <p className="mt-7 max-w-xl text-[15.5px] leading-[1.8]" style={{ color: theme === "light" ? "rgba(247,246,242,0.65)" : "rgba(237,237,234,0.65)" }}>
+              <p className="mt-7 max-w-xl text-[15.5px] leading-[1.8]" style={{ color: "rgba(247,246,242,0.65)" }}>
                 I am always interested in opportunities involving software engineering, data
                 science, artificial intelligence and digital transformation — in Algeria or
                 internationally.
@@ -1445,8 +1435,8 @@ function Contact({ theme }: { theme: Theme }) {
                     data-cursor="hover"
                     className="items-center gap-2 border px-5 py-2.5 font-mono text-[10.5px] uppercase tracking-[0.16em] no-underline transition-all duration-300 hover:-translate-y-0.5"
                     style={{
-                      borderColor: theme === "light" ? "rgba(247,246,242,0.3)" : "rgba(237,237,234,0.3)",
-                      color: p.paper,
+                      borderColor: "rgba(247,246,242,0.3)",
+                      color: INV_TEXT,
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = BLUE;
@@ -1454,7 +1444,7 @@ function Contact({ theme }: { theme: Theme }) {
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = "transparent";
-                      e.currentTarget.style.borderColor = theme === "light" ? "rgba(247,246,242,0.3)" : "rgba(237,237,234,0.3)";
+                      e.currentTarget.style.borderColor = "rgba(247,246,242,0.3)";
                     }}
                   >
                     {l.label}
@@ -1471,19 +1461,19 @@ function Contact({ theme }: { theme: Theme }) {
                 {[
                   ["Position", "Software Engineer, BADR Bank"],
                   ["Building", "Banking platforms & reconciliation"],
-                  ["Research", "2 papers @ MICCAI Society 2026"],
+                  ["Research", "2 papers @ MICCAI 2026 workshops"],
                   ["Stack", "Python · PL/SQL · PHP · React"],
                   ["Based in", PROFILE.location],
                 ].map(([k, v]) => (
                   <li
                     key={k}
                     className="flex gap-5 border-b py-4 text-[14px] last:border-0"
-                    style={{ borderColor: theme === "light" ? "rgba(247,246,242,0.12)" : "rgba(237,237,234,0.12)" }}
+                    style={{ borderColor: "rgba(247,246,242,0.12)" }}
                   >
-                    <span className="w-20 flex-shrink-0 font-mono text-[9.5px] uppercase tracking-[0.16em]" style={{ color: theme === "light" ? "rgba(247,246,242,0.45)" : "rgba(237,237,234,0.45)" }}>
+                    <span className="w-20 flex-shrink-0 font-mono text-[9.5px] uppercase tracking-[0.16em]" style={{ color: "rgba(247,246,242,0.45)" }}>
                       {k}
                     </span>
-                    <span style={{ color: theme === "light" ? "rgba(247,246,242,0.85)" : "rgba(237,237,234,0.85)" }}>{v}</span>
+                    <span style={{ color: "rgba(247,246,242,0.85)" }}>{v}</span>
                   </li>
                 ))}
               </ul>
@@ -1493,7 +1483,7 @@ function Contact({ theme }: { theme: Theme }) {
 
         <div
           className="mt-16 flex flex-col gap-3 border-t pt-6 font-mono text-[10px] uppercase tracking-[0.2em] sm:flex-row sm:items-center sm:justify-between"
-          style={{ borderColor: theme === "light" ? "rgba(247,246,242,0.14)" : "rgba(237,237,234,0.14)", color: theme === "light" ? "rgba(247,246,242,0.45)" : "rgba(237,237,234,0.45)" }}
+          style={{ borderColor: "rgba(247,246,242,0.14)", color: "rgba(247,246,242,0.45)" }}
         >
           <span>© {new Date().getFullYear()} {PROFILE.name} — Algiers</span>
           <button
