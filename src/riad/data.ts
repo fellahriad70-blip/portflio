@@ -1,15 +1,14 @@
 export const PROFILE = {
   name: "Ahmed Riadh Fellah",
-  shortName: "Riad Fellah",
-  firstName: "RIAD",
+  shortName: "Riadh Fellah",
+  firstName: "RIADH",
   lastName: "FELLAH",
   title: "Software Engineer @ BADR Bank",
   subtitle: "Data Scientist · Banking Information Systems",
   location: "Algiers, Algeria",
   email: "fellahriad70@gmail.com",
   links: {
-    linkedin: "https://www.linkedin.com/in/riad-fellah",
-    github: "https://github.com/",
+    linkedin: "https://www.linkedin.com/in/riad-fellah-ba0a20248/",
   },
   status: "Open to Software Engineering · Data Science · AI · Digital Transformation",
   intro:
@@ -215,14 +214,14 @@ export const RESEARCH = {
     {
       title:
         "A Dual-Branch Fusion Pipeline for Head and Neck Tumor Segmentation, TN Staging, and Recurrence-Free Survival Prediction: HECKTOR 2026",
-      authors: "Ikram Aissiou, Riad Fellah, Sam Guessoum, Naima Boukhiar",
+      authors: "Ikram Aissiou, Riadh Fellah, Sam Guessoum, Naima Boukhiar",
       venue: "HECKTOR Challenge @ MICCAI Society 2026 · Poster · Strasbourg, France",
       note: "Joint tumour segmentation, TN staging and survival prediction from multimodal PET/CT.",
     },
     {
       title:
         "NeuroGraphMamba: A Spatial-Temporal Graph State-Space Architecture for Patient-Independent Epileptic Seizure Detection",
-      authors: "Ikram Aissiou, Naima Boukhiar, Sam Guessoum, Riad Fellah",
+      authors: "Ikram Aissiou, Naima Boukhiar, Sam Guessoum, Riadh Fellah",
       venue: "AMAI Workshop @ MICCAI Society 2026 · Poster · Strasbourg, France",
       note: "Graph state-space modelling of EEG for patient-independent seizure detection.",
     },
