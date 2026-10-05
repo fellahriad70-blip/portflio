@@ -27,7 +27,7 @@ export const NAV = [
 
 export const STATS = [
   { value: 8, suffix: "", label: "Banking platforms", sub: "delivered to production" },
-  { value: 2, suffix: "", label: "MICCAI papers", sub: "co-authored, 2026" },
+  { value: 2, suffix: "", label: "MICCAI workshop papers", sub: "co-authored, 2026" },
   { value: 90, suffix: "%+", label: "ML accuracy", sub: "on solar irradiation" },
   { value: 4, suffix: "+", label: "Years in software", sub: "since first internship, 2022" },
 ];
@@ -36,7 +36,7 @@ export const ABOUT = [
   "I am a software engineer and data science graduate with experience in banking information systems, machine learning, and enterprise software development.",
   "Currently, I work as a Software Engineer at BADR Bank — Banque de l'Agriculture et du Développement Rural — where I design, develop, and maintain banking applications while collaborating with business and technical teams to deliver reliable software solutions.",
   "My academic background in Data Science and Analytics enabled me to build predictive machine learning models, analyse large-scale datasets, and transform data into actionable insights. My master's research focused on predicting solar irradiation from meteorological data using machine learning, achieving predictive accuracy above 90%.",
-  "Alongside industry work, I co-authored two papers accepted at MICCAI Society 2026 venues, contributing machine learning engineering to medical imaging research in head-and-neck tumour analysis and EEG-based seizure detection.",
+  "Alongside industry work, I co-authored two papers accepted at MICCAI 2026 workshops, contributing machine learning engineering to medical imaging research in head-and-neck tumour analysis and EEG-based seizure detection.",
 ];
 
 export const CORE_AREAS = [
@@ -209,20 +209,22 @@ export const PROJECTS: Project[] = [
 
 export const RESEARCH = {
   intro:
-    "Alongside enterprise engineering, I contribute machine learning engineering to medical imaging research. Two papers I co-authored were accepted at MICCAI Society 2026 venues.",
+    "Alongside enterprise engineering, I contribute machine learning engineering to medical imaging research. Two papers I co-authored were accepted at MICCAI 2026 workshops.",
   papers: [
     {
       title:
         "A Dual-Branch Fusion Pipeline for Head and Neck Tumor Segmentation, TN Staging, and Recurrence-Free Survival Prediction: HECKTOR 2026",
       authors: "Ikram Aissiou, Riadh Fellah, Sam Guessoum, Naima Boukhiar",
-      venue: "HECKTOR Challenge @ MICCAI Society 2026 · Poster · Strasbourg, France",
+      badge: "MICCAI Workshop · HECKTOR 2026",
+      venue: "MICCAI Workshop — HECKTOR 2026 · Strasbourg, France",
       note: "Joint tumour segmentation, TN staging and survival prediction from multimodal PET/CT.",
     },
     {
       title:
         "NeuroGraphMamba: A Spatial-Temporal Graph State-Space Architecture for Patient-Independent Epileptic Seizure Detection",
       authors: "Ikram Aissiou, Naima Boukhiar, Sam Guessoum, Riadh Fellah",
-      venue: "AMAI Workshop @ MICCAI Society 2026 · Poster · Strasbourg, France",
+      badge: "AMAI 2026 · Poster",
+      venue: "Poster — AMAI 2026 · Strasbourg, France",
       note: "Graph state-space modelling of EEG for patient-independent seizure detection.",
     },
   ],
