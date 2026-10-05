@@ -776,7 +776,6 @@ function Hero({ theme }: { theme: Theme }) {
                 <div className="flex flex-wrap items-center gap-5">
                   {[
                     { label: "LinkedIn", href: PROFILE.links.linkedin, icon: "linkedin" },
-                    { label: "GitHub", href: PROFILE.links.github, icon: "github" },
                     { label: "Email", href: `mailto:${PROFILE.email}`, icon: "mail" },
                   ].map((l) => (
                     <a
@@ -1436,7 +1435,6 @@ function Contact({ theme }: { theme: Theme }) {
               <div className="mt-9 flex flex-wrap gap-3">
                 {[
                   { label: "LinkedIn", href: PROFILE.links.linkedin },
-                  { label: "GitHub", href: PROFILE.links.github },
                 ].map((l) => (
                   <Magnetic
                     key={l.label}
